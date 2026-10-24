@@ -35,7 +35,11 @@ keys:
   outer: extend                 # C3-E3 below, G#5-C6 above, through the same key path (scales, chords, arp)
   velocity: factory             # the unit's calibration curves; KEY VELOCITY (DYNAMIC, SOFT, HARD, FIXED 64/100/127)
                                 # on the Setup page's Touch settings, applied to keys and pads in one place
-  sequencer_page: play          # owner: on the Sequencer page the keybed plays notes (the pads edit the steps)
+  sequencer_page:               # owner: on the Sequencer page only; every other page, all 37 keys play
+    white: play                 # all 22 white keys play notes (the pads edit the steps)
+    black_1_4: select track 1-4 # C#3 D#3 F#3 G#3
+    black_5_11: play            # A#3 C#4 D#4 F#4 G#4 A#4 C#5 (with a scale: its chords, as on other pages)
+    black_12_15: mute track 1-4 # D#5 F#5 G#5 A#5
 
 pads:
   pattern: steps                # the selected track's 16 steps, on every page
@@ -46,7 +50,7 @@ pads:
   idle: dark
   playhead: bright
   velocity: false               # a pad edits, it does not play
-  notes: "track select stays on SELECT and < >; mutes need a new home (open_questions)"
+  notes: "track select: SELECT, < > and black keys 1-4 on the Sequencer page; mutes: black keys 12-15 there"
 
 faders:
   pattern: macros               # four controllers of their own, separate from the knobs' banks
@@ -70,6 +74,7 @@ rules:
   doubles_allowed:
     - mod wheel and LFO button both send CC 1 (owner)
     - KNOB BANK and FX held both let KNOB 1-4 set the bank's controller numbers (owner)
+    - track select on SELECT / < > and on black keys 1-4 (Sequencer page), as on the FM-1 (owner)
 
 knobs:
   layout: fm1
@@ -105,6 +110,4 @@ pedal: none
 
 modes: {}                       # one UI (six pages)
 
-open_questions:
-  - "Sequencer mutes: on the FM-1, black keys 5-8 on the Sequencer page mute tracks 1-4. With the keybed playing
-    there, where should mutes go? Proposal: SEQ held + pad 1-4 (shown on screen while SEQ is held)."
+open_questions: []
