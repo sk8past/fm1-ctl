@@ -118,4 +118,25 @@ All 14 FM-1 buttons are present, remapped to the SMK-37 panel:
 
 ---
 
+## Building packages
+
+Requires the JieLi AC79 toolchain and SDK (see `BUILDING.md`).
+
+```sh
+# SMK-37 Pro (also Starrykey 37 Play)
+BOARD=smk37 MODEL=pro   sh build.sh   # → build/ctl1-smk37.fwsc
+
+# SMK-37 Elite
+BOARD=smk37 MODEL=elite sh build.sh   # → build/ctl1-smk37-elite.fwsc
+
+# MKE-P37
+BOARD=smk37 MODEL=mke   sh build.sh   # → build/ctl1-smk37-mke.fwsc
+```
+
+Install with `base/bsp/tools/fm1_install.py` (the fork's web installer also works).
+To restore factory firmware: M-Vave's M-UPGRADE tool with the original `.ufw` from
+the device backup taken before installing.
+
+---
+
 *Copyright © 2026 Peter Whitney.  Firmware: CTL-1 / smk37-port.yaml.*
